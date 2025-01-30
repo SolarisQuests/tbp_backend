@@ -23,6 +23,7 @@ import jwt from "jsonwebtoken"
 
 
 import { PDFDocument } from 'pdf-lib';
+import userroute from './routes/userroute.js';
 
 const app = express();
 const port = 3010;
@@ -401,6 +402,9 @@ cron.schedule("*/1 * * * *", () => {
       console.error('Error running scheduled task:', error);
     }
   });
+
+
+  app.use("/user", userroute);
 
 
 app.listen(port, () => {
